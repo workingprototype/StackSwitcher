@@ -1,0 +1,98 @@
+#! /bin/sh
+
+SED="sed"
+prefix="/opt/homebrew/Cellar/php@8.1/8.1.30_1"
+datarootdir="/opt/homebrew/Cellar/php@8.1/8.1.30_1/share"
+exec_prefix="${prefix}"
+version="8.1.30"
+vernum="80130"
+include_dir="${prefix}/include/php"
+includes="-I$include_dir -I$include_dir/main -I$include_dir/TSRM -I$include_dir/Zend -I$include_dir/ext -I$include_dir/ext/date/lib"
+ldflags=" -L/opt/homebrew/Cellar/krb5/1.21.3/lib -L/opt/homebrew/Cellar/openssl@3/3.3.2/lib -L/opt/homebrew/Cellar/pcre2/10.44/lib -L/opt/homebrew/opt/sqlite/lib -L/opt/homebrew/Cellar/curl/8.10.1/lib -L/opt/homebrew/Cellar/gd/2.3.3_6/lib -L/opt/homebrew/opt/gettext/lib -L/opt/homebrew/opt/gmp/lib -L/opt/homebrew/Cellar/icu4c@75/75.1/lib -L/opt/homebrew/opt/openldap/lib -L/opt/homebrew/Cellar/oniguruma/6.9.9/lib -L/opt/homebrew/Cellar/unixodbc/2.3.12/lib -L/opt/homebrew/opt/freetds/lib -L/opt/homebrew/opt/unixodbc/lib -L/opt/homebrew/opt/libpq/lib -L/opt/homebrew/opt/aspell/lib -L/opt/homebrew/Cellar/libsodium/1.0.20/lib -L/opt/homebrew/Cellar/argon2/20190702_1/lib -L/opt/homebrew/opt/tidy-html5/lib -L/opt/homebrew/Cellar/libzip/1.11.1/lib"
+libs="  -ltidy -lresolv -lncurses -laspell -lpspell -lpq -lpq -lsybdb -lldap -llber -lstdc++ -liconv -lgmp -lintl -lbz2 -lnetwork -lm  -lxml2 -lgssapi_krb5 -lkrb5 -lk5crypto -lcom_err -lssl -lcrypto -lpcre2-8 -lsqlite3 -lz -lcurl -lssl -lcrypto -lxml2 -lffi -lssl -lcrypto -lgd -licuio -licui18n -licuuc -licudata -lonig -lodbc -lodbc -lsqlite3 -ledit -lxml2 -lxml2 -lsodium -largon2 -lxml2 -lxml2 -lxml2 -lxslt -lxml2 -lexslt -lxslt -lxml2 -lzip -lz -lssl -lcrypto "
+extension_dir='/opt/homebrew/Cellar/php@8.1/8.1.30_1/pecl/20210902'
+man_dir=`eval echo ${datarootdir}/man`
+program_prefix=""
+program_suffix=""
+exe_extension=""
+php_cli_binary=NONE
+php_cgi_binary=NONE
+configure_options=" '--prefix=/opt/homebrew/Cellar/php@8.1/8.1.30_1' '--localstatedir=/opt/homebrew/var' '--sysconfdir=/opt/homebrew/etc/php/8.1' '--with-config-file-path=/opt/homebrew/etc/php/8.1' '--with-config-file-scan-dir=/opt/homebrew/etc/php/8.1/conf.d' '--with-pear=/opt/homebrew/Cellar/php@8.1/8.1.30_1/share/php@8.1/pear' '--enable-bcmath' '--enable-calendar' '--enable-dba' '--enable-exif' '--enable-ftp' '--enable-fpm' '--enable-gd' '--enable-intl' '--enable-mbregex' '--enable-mbstring' '--enable-mysqlnd' '--enable-pcntl' '--enable-phpdbg' '--enable-phpdbg-readline' '--enable-shmop' '--enable-soap' '--enable-sockets' '--enable-sysvmsg' '--enable-sysvsem' '--enable-sysvshm' '--with-apxs2=/opt/homebrew/opt/httpd/bin/apxs' '--with-bz2=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/usr' '--with-curl' '--with-external-gd' '--with-external-pcre' '--with-ffi' '--with-fpm-user=_www' '--with-fpm-group=_www' '--with-gettext=/opt/homebrew/opt/gettext' '--with-gmp=/opt/homebrew/opt/gmp' '--with-iconv=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/usr' '--with-kerberos' '--with-layout=GNU' '--with-ldap=/opt/homebrew/opt/openldap' '--with-libxml' '--with-libedit' '--with-mhash=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/usr' '--with-mysql-sock=/tmp/mysql.sock' '--with-mysqli=mysqlnd' '--with-ndbm=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/usr' '--with-openssl' '--with-password-argon2=/opt/homebrew/opt/argon2' '--with-pdo-dblib=/opt/homebrew/opt/freetds' '--with-pdo-mysql=mysqlnd' '--with-pdo-odbc=unixODBC,/opt/homebrew/opt/unixodbc' '--with-pdo-pgsql=/opt/homebrew/opt/libpq' '--with-pdo-sqlite' '--with-pgsql=/opt/homebrew/opt/libpq' '--with-pic' '--with-pspell=/opt/homebrew/opt/aspell' '--with-sodium' '--with-sqlite3' '--with-tidy=/opt/homebrew/opt/tidy-html5' '--with-unixODBC' '--with-xsl' '--with-zip' '--with-zlib' '--enable-dtrace' '--with-ldap-sasl' '--with-os-sdkpath=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk' 'PKG_CONFIG_PATH=/opt/homebrew/opt/apr/lib/pkgconfig:/opt/homebrew/opt/openssl@3/lib/pkgconfig:/opt/homebrew/opt/apr-util/lib/pkgconfig:/opt/homebrew/opt/argon2/lib/pkgconfig:/opt/homebrew/opt/brotli/lib/pkgconfig:/opt/homebrew/opt/libnghttp2/lib/pkgconfig:/opt/homebrew/opt/libssh2/lib/pkgconfig:/opt/homebrew/opt/rtmpdump/lib/pkgconfig:/opt/homebrew/opt/lz4/lib/pkgconfig:/opt/homebrew/opt/xz/lib/pkgconfig:/opt/homebrew/opt/zstd/lib/pkgconfig:/opt/homebrew/opt/curl/lib/pkgconfig:/opt/homebrew/opt/unixodbc/lib/pkgconfig:/opt/homebrew/opt/libpng/lib/pkgconfig:/opt/homebrew/opt/freetype/lib/pkgconfig:/opt/homebrew/opt/fontconfig/lib/pkgconfig:/opt/homebrew/opt/jpeg-turbo/lib/pkgconfig:/opt/homebrew/opt/highway/lib/pkgconfig:/opt/homebrew/opt/imath/lib/pkgconfig:/opt/homebrew/opt/libtiff/lib/pkgconfig:/opt/homebrew/opt/little-cms2/lib/pkgconfig:/opt/homebrew/opt/openexr/lib/pkgconfig:/opt/homebrew/opt/webp/lib/pkgconfig:/opt/homebrew/opt/jpeg-xl/lib/pkgconfig:/opt/homebrew/opt/libvmaf/lib/pkgconfig:/opt/homebrew/opt/aom/lib/pkgconfig:/opt/homebrew/opt/libavif/lib/pkgconfig:/opt/homebrew/opt/gd/lib/pkgconfig:/opt/homebrew/opt/gmp/lib/pkgconfig:/opt/homebrew/opt/icu4c@75/lib/pkgconfig:/opt/homebrew/opt/krb5/lib/pkgconfig:/opt/homebrew/opt/libpq/lib/pkgconfig:/opt/homebrew/opt/libsodium/lib/pkgconfig:/opt/homebrew/opt/libzip/lib/pkgconfig:/opt/homebrew/opt/oniguruma/lib/pkgconfig:/opt/homebrew/opt/openldap/lib/pkgconfig:/opt/homebrew/opt/pcre2/lib/pkgconfig:/opt/homebrew/opt/readline/lib/pkgconfig:/opt/homebrew/opt/sqlite/lib/pkgconfig:/opt/homebrew/opt/tidy-html5/lib/pkgconfig' 'PKG_CONFIG_LIBDIR=/usr/lib/pkgconfig:/opt/homebrew/Library/Homebrew/os/mac/pkgconfig/14' 'KERBEROS_CFLAGS= ' 'SASL_CFLAGS=-I/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/usr/include/sasl' 'SASL_LIBS=-lsasl2'"
+php_sapis=" apache2handler cli fpm phpdbg cgi"
+ini_dir="/opt/homebrew/etc/php/8.1/conf.d"
+ini_path="/opt/homebrew/etc/php/8.1"
+
+# Set php_cli_binary and php_cgi_binary if available
+for sapi in $php_sapis; do
+  case $sapi in
+  cli)
+    php_cli_binary="${exec_prefix}/bin/${program_prefix}php${program_suffix}${exe_extension}"
+    ;;
+  cgi)
+    php_cgi_binary="${exec_prefix}/bin/${program_prefix}php-cgi${program_suffix}${exe_extension}"
+    ;;
+  esac
+done
+
+# Determine which (if any) php binary is available
+if test "$php_cli_binary" != "NONE"; then
+  php_binary="$php_cli_binary"
+else
+  php_binary="$php_cgi_binary"
+fi
+
+# Remove quotes
+configure_options=`echo $configure_options | $SED -e "s#'##g"`
+
+case "$1" in
+--prefix)
+  echo $prefix;;
+--includes)
+  echo $includes;;
+--ldflags)
+  echo $ldflags;;
+--libs)
+  echo $libs;;
+--extension-dir)
+  echo $extension_dir;;
+--include-dir)
+  echo $include_dir;;
+--php-binary)
+  echo $php_binary;;
+--php-sapis)
+  echo $php_sapis;;
+--configure-options)
+  echo $configure_options;;
+--man-dir)
+  echo $man_dir;;
+--ini-path)
+  echo $ini_path;;
+--ini-dir)
+  echo $ini_dir;;
+--version)
+  echo $version;;
+--vernum)
+  echo $vernum;;
+*)
+  cat << EOF
+Usage: $0 [OPTION]
+Options:
+  --prefix            [$prefix]
+  --includes          [$includes]
+  --ldflags           [$ldflags]
+  --libs              [$libs]
+  --extension-dir     [$extension_dir]
+  --include-dir       [$include_dir]
+  --man-dir           [$man_dir]
+  --php-binary        [$php_binary]
+  --php-sapis         [$php_sapis]
+  --ini-path          [$ini_path]
+  --ini-dir           [$ini_dir]
+  --configure-options [$configure_options]
+  --version           [$version]
+  --vernum            [$vernum]
+EOF
+  exit 1;;
+esac
+
+exit 0

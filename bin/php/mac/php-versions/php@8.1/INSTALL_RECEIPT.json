@@ -1,0 +1,410 @@
+{
+  "homebrew_version": "4.4.0-75-g7c4f2c1",
+  "used_options": [
+
+  ],
+  "unused_options": [
+
+  ],
+  "built_as_bottle": true,
+  "poured_from_bottle": true,
+  "loaded_from_api": true,
+  "installed_as_dependency": false,
+  "installed_on_request": true,
+  "changed_files": [
+    "bin/pear",
+    "bin/peardev",
+    "bin/pecl",
+    "bin/phar.phar",
+    "bin/php-config",
+    "bin/phpize",
+    ".bottle/etc/php/8.1/pear.conf",
+    ".bottle/etc/php/8.1/php-fpm.conf",
+    ".bottle/etc/php/8.1/php-fpm.d/www.conf",
+    ".bottle/etc/php/8.1/php.ini",
+    ".bottle/etc/php/8.1/php.ini-production",
+    "homebrew.mxcl.php@8.1.plist",
+    "homebrew.php@8.1.service",
+    "include/php/main/build-defs.h",
+    "share/man/man8/php-fpm.8",
+    "share/php@8.1/pear/.registry/archive_tar.reg",
+    "share/php@8.1/pear/.registry/console_getopt.reg",
+    "share/php@8.1/pear/.registry/pear.reg",
+    "share/php@8.1/pear/.registry/structures_graph.reg",
+    "share/php@8.1/pear/.registry/xml_util.reg",
+    "share/php@8.1/pear/pearcmd.php",
+    "share/php@8.1/pear/peclcmd.php",
+    "share/php@8.1/pear/test/Structures_Graph/tests/helper.inc"
+  ],
+  "time": 1729234695,
+  "source_modified_time": 1727372159,
+  "compiler": "clang",
+  "aliases": [
+
+  ],
+  "runtime_dependencies": [
+    {
+      "full_name": "apr",
+      "version": "1.7.5",
+      "revision": 0,
+      "pkg_version": "1.7.5",
+      "declared_directly": true
+    },
+    {
+      "full_name": "ca-certificates",
+      "version": "2024-09-24",
+      "revision": 0,
+      "pkg_version": "2024-09-24",
+      "declared_directly": false
+    },
+    {
+      "full_name": "openssl@3",
+      "version": "3.3.2",
+      "revision": 0,
+      "pkg_version": "3.3.2",
+      "declared_directly": true
+    },
+    {
+      "full_name": "apr-util",
+      "version": "1.6.3",
+      "revision": 1,
+      "pkg_version": "1.6.3_1",
+      "declared_directly": true
+    },
+    {
+      "full_name": "argon2",
+      "version": "20190702",
+      "revision": 1,
+      "pkg_version": "20190702_1",
+      "declared_directly": true
+    },
+    {
+      "full_name": "aspell",
+      "version": "0.60.8.1",
+      "revision": 1,
+      "pkg_version": "0.60.8.1_1",
+      "declared_directly": true
+    },
+    {
+      "full_name": "m4",
+      "version": "1.4.19",
+      "revision": 0,
+      "pkg_version": "1.4.19",
+      "declared_directly": false
+    },
+    {
+      "full_name": "autoconf",
+      "version": "2.72",
+      "revision": 0,
+      "pkg_version": "2.72",
+      "declared_directly": true
+    },
+    {
+      "full_name": "brotli",
+      "version": "1.1.0",
+      "revision": 0,
+      "pkg_version": "1.1.0",
+      "declared_directly": false
+    },
+    {
+      "full_name": "libnghttp2",
+      "version": "1.63.0",
+      "revision": 0,
+      "pkg_version": "1.63.0",
+      "declared_directly": false
+    },
+    {
+      "full_name": "libssh2",
+      "version": "1.11.1",
+      "revision": 0,
+      "pkg_version": "1.11.1",
+      "declared_directly": false
+    },
+    {
+      "full_name": "rtmpdump",
+      "version": "2.4-20151223",
+      "revision": 3,
+      "pkg_version": "2.4-20151223_3",
+      "declared_directly": false
+    },
+    {
+      "full_name": "lz4",
+      "version": "1.10.0",
+      "revision": 0,
+      "pkg_version": "1.10.0",
+      "declared_directly": false
+    },
+    {
+      "full_name": "xz",
+      "version": "5.6.3",
+      "revision": 0,
+      "pkg_version": "5.6.3",
+      "declared_directly": false
+    },
+    {
+      "full_name": "zstd",
+      "version": "1.5.6",
+      "revision": 0,
+      "pkg_version": "1.5.6",
+      "declared_directly": false
+    },
+    {
+      "full_name": "curl",
+      "version": "8.10.1",
+      "revision": 0,
+      "pkg_version": "8.10.1",
+      "declared_directly": true
+    },
+    {
+      "full_name": "libtool",
+      "version": "2.5.3",
+      "revision": 0,
+      "pkg_version": "2.5.3",
+      "declared_directly": false
+    },
+    {
+      "full_name": "unixodbc",
+      "version": "2.3.12",
+      "revision": 0,
+      "pkg_version": "2.3.12",
+      "declared_directly": true
+    },
+    {
+      "full_name": "freetds",
+      "version": "1.4.23",
+      "revision": 0,
+      "pkg_version": "1.4.23",
+      "declared_directly": true
+    },
+    {
+      "full_name": "libpng",
+      "version": "1.6.44",
+      "revision": 0,
+      "pkg_version": "1.6.44",
+      "declared_directly": false
+    },
+    {
+      "full_name": "freetype",
+      "version": "2.13.3",
+      "revision": 0,
+      "pkg_version": "2.13.3",
+      "declared_directly": false
+    },
+    {
+      "full_name": "fontconfig",
+      "version": "2.15.0",
+      "revision": 0,
+      "pkg_version": "2.15.0",
+      "declared_directly": false
+    },
+    {
+      "full_name": "jpeg-turbo",
+      "version": "3.0.4",
+      "revision": 0,
+      "pkg_version": "3.0.4",
+      "declared_directly": false
+    },
+    {
+      "full_name": "giflib",
+      "version": "5.2.2",
+      "revision": 0,
+      "pkg_version": "5.2.2",
+      "declared_directly": false
+    },
+    {
+      "full_name": "highway",
+      "version": "1.2.0",
+      "revision": 0,
+      "pkg_version": "1.2.0",
+      "declared_directly": false
+    },
+    {
+      "full_name": "imath",
+      "version": "3.1.12",
+      "revision": 0,
+      "pkg_version": "3.1.12",
+      "declared_directly": false
+    },
+    {
+      "full_name": "libtiff",
+      "version": "4.7.0",
+      "revision": 0,
+      "pkg_version": "4.7.0",
+      "declared_directly": false
+    },
+    {
+      "full_name": "little-cms2",
+      "version": "2.16",
+      "revision": 0,
+      "pkg_version": "2.16",
+      "declared_directly": false
+    },
+    {
+      "full_name": "libdeflate",
+      "version": "1.22",
+      "revision": 0,
+      "pkg_version": "1.22",
+      "declared_directly": false
+    },
+    {
+      "full_name": "openexr",
+      "version": "3.3.1",
+      "revision": 0,
+      "pkg_version": "3.3.1",
+      "declared_directly": false
+    },
+    {
+      "full_name": "webp",
+      "version": "1.4.0",
+      "revision": 0,
+      "pkg_version": "1.4.0",
+      "declared_directly": false
+    },
+    {
+      "full_name": "jpeg-xl",
+      "version": "0.11.0",
+      "revision": 1,
+      "pkg_version": "0.11.0_1",
+      "declared_directly": false
+    },
+    {
+      "full_name": "libvmaf",
+      "version": "3.0.0",
+      "revision": 0,
+      "pkg_version": "3.0.0",
+      "declared_directly": false
+    },
+    {
+      "full_name": "aom",
+      "version": "3.10.0",
+      "revision": 0,
+      "pkg_version": "3.10.0",
+      "declared_directly": false
+    },
+    {
+      "full_name": "libavif",
+      "version": "1.1.1",
+      "revision": 0,
+      "pkg_version": "1.1.1",
+      "declared_directly": false
+    },
+    {
+      "full_name": "gd",
+      "version": "2.3.3",
+      "revision": 6,
+      "pkg_version": "2.3.3_6",
+      "declared_directly": true
+    },
+    {
+      "full_name": "gettext",
+      "version": "0.22.5",
+      "revision": 0,
+      "pkg_version": "0.22.5",
+      "declared_directly": true
+    },
+    {
+      "full_name": "gmp",
+      "version": "6.3.0",
+      "revision": 0,
+      "pkg_version": "6.3.0",
+      "declared_directly": true
+    },
+    {
+      "full_name": "icu4c@75",
+      "version": "75.1",
+      "revision": 0,
+      "pkg_version": "75.1",
+      "declared_directly": true
+    },
+    {
+      "full_name": "krb5",
+      "version": "1.21.3",
+      "revision": 0,
+      "pkg_version": "1.21.3",
+      "declared_directly": true
+    },
+    {
+      "full_name": "libpq",
+      "version": "17.0",
+      "revision": 1,
+      "pkg_version": "17.0_1",
+      "declared_directly": true
+    },
+    {
+      "full_name": "libsodium",
+      "version": "1.0.20",
+      "revision": 0,
+      "pkg_version": "1.0.20",
+      "declared_directly": true
+    },
+    {
+      "full_name": "libzip",
+      "version": "1.11.1",
+      "revision": 0,
+      "pkg_version": "1.11.1",
+      "declared_directly": true
+    },
+    {
+      "full_name": "oniguruma",
+      "version": "6.9.9",
+      "revision": 0,
+      "pkg_version": "6.9.9",
+      "declared_directly": true
+    },
+    {
+      "full_name": "openldap",
+      "version": "2.6.8",
+      "revision": 0,
+      "pkg_version": "2.6.8",
+      "declared_directly": true
+    },
+    {
+      "full_name": "pcre2",
+      "version": "10.44",
+      "revision": 0,
+      "pkg_version": "10.44",
+      "declared_directly": true
+    },
+    {
+      "full_name": "readline",
+      "version": "8.2.13",
+      "revision": 0,
+      "pkg_version": "8.2.13",
+      "declared_directly": false
+    },
+    {
+      "full_name": "sqlite",
+      "version": "3.46.1",
+      "revision": 0,
+      "pkg_version": "3.46.1",
+      "declared_directly": true
+    },
+    {
+      "full_name": "tidy-html5",
+      "version": "5.8.0",
+      "revision": 0,
+      "pkg_version": "5.8.0",
+      "declared_directly": true
+    }
+  ],
+  "source": {
+    "spec": "stable",
+    "versions": {
+      "stable": "8.1.30",
+      "head": null,
+      "version_scheme": 0
+    },
+    "path": "/Users/adarshc/Library/Caches/Homebrew/api/formula.jws.json",
+    "tap_git_head": null,
+    "tap": "homebrew/core"
+  },
+  "arch": "arm64",
+  "built_on": {
+    "os": "Macintosh",
+    "os_version": "macOS 14.4",
+    "cpu_family": "dunno",
+    "xcode": "15.3",
+    "clt": "15.3.0.0.1.1708646388",
+    "preferred_perl": "5.34"
+  }
+}

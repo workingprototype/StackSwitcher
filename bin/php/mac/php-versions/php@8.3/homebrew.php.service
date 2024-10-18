@@ -1,0 +1,12 @@
+[Unit]
+Description=Homebrew generated unit for php
+
+[Install]
+WantedBy=default.target
+
+[Service]
+Type=simple
+ExecStart=/opt/homebrew/opt/php/sbin/php-fpm --nodaemonize
+Restart=always
+WorkingDirectory=/opt/homebrew/var
+StandardError=append:/opt/homebrew/var/log/php-fpm.log
