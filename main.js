@@ -1,46 +1,44 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const { exec } = require('child_process');
 
-// Paths to PHP and Apache binaries
-const phpPath = path.join(__dirname, 'bin/php/php.exe'); // For Windows (use appropriate path for macOS/Linux)
-const apachePath = path.join(__dirname, 'bin/apache/apache.exe'); // For Windows (use appropriate path for macOS/Linux)
+let phpProcess = null;  // Track the running PHP process
 
-// Function to start PHP server
-function startPHP() {
-  exec(`${phpPath} -S localhost:8000 -t ${__dirname}/www`, (err, stdout, stderr) => {
+// Function to start PHP server for the selected version
+function startPHP(version) {
+  if (phpProcess) {
+    phpProcess.kill();  // Kill any previously running PHP process
+  }
+
+  const phpPath = path.join(__dirname, `bin/php${version}/php.exe`); // Adjust for Linux/macOS
+  
+  phpProcess = exec(`${phpPath} -S localhost:8000 -t ${__dirname}/www`, (err, stdout, stderr) => {
     if (err) {
       console.error(`Error starting PHP: ${stderr}`);
     } else {
-      console.log(`PHP Server started: ${stdout}`);
+      console.log(`PHP ${version} Server started: ${stdout}`);
     }
   });
 }
 
-// Function to start Apache server
-function startApache() {
-  exec(`${apachePath} -k start`, (err, stdout, stderr) => {
-    if (err) {
-      console.error(`Error starting Apache: ${stderr}`);
-    } else {
-      console.log(`Apache Server started: ${stdout}`);
-    }
-  });
-}
-
-// Create the Electron window and start servers
+// Create the Electron window
 function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true, // Required to use ipcRenderer in the frontend
+      contextIsolation: false,
     },
   });
 
   mainWindow.loadFile('index.html');
-  startPHP();
-  startApache();
+
+  // Handle PHP version switch from the frontend
+  ipcMain.on('switch-php-version', (event, version) => {
+    startPHP(version);
+  });
 }
 
 app.whenReady().then(() => {
@@ -52,5 +50,8 @@ app.whenReady().then(() => {
 });
 
 app.on('window-all-closed', () => {
+  if (phpProcess) {
+    phpProcess.kill();  // Ensure PHP process is killed when window is closed
+  }
   if (process.platform !== 'darwin') app.quit();
 });
