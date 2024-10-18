@@ -40,3 +40,107 @@ We’re continuously working to enhance **StackSwitcher**! Here’s what you can
 
 Stay tuned for these features and more as we continue to improve **StackSwitcher**!
 
+How to run the StackSwitcher:
+
+## Installation
+
+
+1. **Navigate to the root directory:**
+
+   ```bash
+   cd StackSwitcher
+   ```
+2. Install electron & nodejs
+
+   ```bash
+   npm install
+   ```
+
+   ```bash
+   npm install electron --save-dev
+   ```
+   
+3. Run the development instance
+   
+   ```bash
+   npx electron .
+   ```
+
+
+How to run our StackSwitcher Apps:
+
+# StackSwitcherDBM
+
+An easy to use Laravel app that allows users to connect to a their favourite DB servers ( currently supports MYSQL only), view available databases, select a database, view its tables, and run SQL queries.
+
+## Features
+
+- Connect to a MySQL server using provided credentials.
+- View all available databases on the server.
+- Select a database to explore its tables.
+- Run custom SQL queries against the selected database.
+- View query results in a user-friendly format.
+
+## Requirements
+
+- PHP >= 7.3
+- Laravel >= 8.x
+- MySQL Server
+
+## Installation
+
+
+1. **Navigate to the project directory:**
+
+   ```bash
+   cd apps/StackSwitcherDBM
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   composer install
+   ```
+
+3. **Set up the environment file:**
+
+   Copy the `.env.example` file to `.env`:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Update the `.env` file with your application settings, including the database connection details.
+
+5. **Generate the application key:**
+
+   ```bash
+   php artisan key:generate
+   ```
+
+6. **Run database migrations (if any):**
+
+   ```bash
+   php artisan migrate
+   ```
+
+7. **Start the Laravel development server:**
+
+   ```bash
+   php artisan serve
+   ```
+
+   The application will be available at `http://localhost:8000`.
+
+## Usage
+
+1. Open your web browser and navigate to `http://localhost:8000`.
+2. Enter your MySQL server credentials (host, port, username, and password).
+3. Click the "Connect" button to fetch available databases.
+4. Select a database to view its tables.
+5. Run your desired SQL queries in the provided text area and click "Run Query" to see results.
+
+## Error Handling
+
+- If you encounter any issues connecting to the MySQL server or running queries, check the Laravel log files located in the `storage/logs/` directory for more details.
+
