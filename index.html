@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP & Apache Server</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StackSwitcher</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    #status { margin-top: 20px; }
+  </style>
 </head>
 <body>
-    <h1>PHP 8.1 and Apache Server</h1>
-    <p>Both servers are running.</p>
+  <h1>Select PHP Version</h1>
+  <select id="phpVersion" onchange="switchVersion()">
+    <option value="8.1">PHP 8.1</option>
+    <option value="8.2">PHP 8.2</option>
+    <option value="8.3">PHP 8.3</option>
+  </select>
+  
+  <div id="status">Select a PHP version to start the server.</div>
+
+  <script>
+    const { ipcRenderer } = require('electron');
+
+    function switchVersion() {
+      const version = document.getElementById('phpVersion').value;
+      ipcRenderer.send('switch-php-version', version);
+    }
+
+    ipcRenderer.on('php-switch-status', (event, message) => {
+      document.getElementById('status').innerText = message;
+    });
+  </script>
 </body>
 </html>
