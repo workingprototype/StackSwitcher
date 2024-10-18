@@ -28,9 +28,6 @@ function startPHP(version) {
   }
 
   const phpPath = getPHPPath(version);
-
-  // Log the command being executed for debugging
-  console.log(`Starting PHP ${version} at ${phpPath}`);
   
   phpProcess = exec(`${phpPath} -S localhost:8000 -t ${__dirname}/www`, (err, stdout, stderr) => {
     if (err) {
@@ -41,11 +38,19 @@ function startPHP(version) {
   });
 
   phpProcess.stdout.on('data', (data) => {
-    console.log(`PHP Output: ${data}`);
+    // Filter out non-error messages if needed
+    if (!data.includes("Development Server")) {
+      console.log(`PHP Output: ${data}`);
+    }
   });
 
   phpProcess.stderr.on('data', (data) => {
     console.error(`PHP Error: ${data}`);
+  });
+
+  phpProcess.on('exit', (code) => {
+    console.log(`PHP server exited with code ${code}`);
+    phpProcess = null;  // Clear the phpProcess variable
   });
 }
 
