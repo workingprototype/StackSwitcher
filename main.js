@@ -2,6 +2,8 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const { exec } = require('child_process');
 const os = require('os');
+const net = require('net');
+
 
 let phpProcess = null;  // Track the running PHP process
 
