@@ -1,8 +1,25 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const { exec } = require('child_process');
+const os = require('os');
 
 let phpProcess = null;  // Track the running PHP process
+
+// Function to determine the correct PHP path based on OS and version
+function getPHPPath(version) {
+  const platform = os.platform();
+
+  if (platform === 'win32') {
+    // For Windows
+    return path.join(__dirname, `bin/php${version}/php.exe`);
+  } else if (platform === 'darwin') {
+    // For macOS (Homebrew paths)
+    return `/opt/homebrew/opt/php@${version}/bin/php`;
+  } else {
+    // For Linux (if needed, adjust this path based on your setup)
+    return path.join(__dirname, `bin/php${version}/php`);
+  }
+}
 
 // Function to start PHP server for the selected version
 function startPHP(version) {
@@ -10,7 +27,10 @@ function startPHP(version) {
     phpProcess.kill();  // Kill any previously running PHP process
   }
 
-  const phpPath = path.join(__dirname, `bin/php${version}/php.exe`); // Adjust for Linux/macOS
+  const phpPath = getPHPPath(version);
+
+  // Log the command being executed for debugging
+  console.log(`Starting PHP ${version} at ${phpPath}`);
   
   phpProcess = exec(`${phpPath} -S localhost:8000 -t ${__dirname}/www`, (err, stdout, stderr) => {
     if (err) {
@@ -18,6 +38,14 @@ function startPHP(version) {
     } else {
       console.log(`PHP ${version} Server started: ${stdout}`);
     }
+  });
+
+  phpProcess.stdout.on('data', (data) => {
+    console.log(`PHP Output: ${data}`);
+  });
+
+  phpProcess.stderr.on('data', (data) => {
+    console.error(`PHP Error: ${data}`);
   });
 }
 
@@ -38,6 +66,7 @@ function createWindow() {
   // Handle PHP version switch from the frontend
   ipcMain.on('switch-php-version', (event, version) => {
     startPHP(version);
+    event.reply('php-switch-status', `Switched to PHP ${version} and started the server.`);
   });
 }
 
