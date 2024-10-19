@@ -107,46 +107,46 @@ class DatabaseController extends Controller
     }
 
     public function runQuery(Request $request)
-    {
-        $validated = $request->validate([
-            'database' => 'required',
-            'query' => 'required',
-            'host' => 'required',
-            'port' => 'required|numeric',
-            'username' => 'required',
-            'password' => 'nullable',
-        ]);
+{
+    $validated = $request->validate([
+        'database' => 'required',
+        'query' => 'required',
+        'host' => 'required',
+        'port' => 'required|numeric',
+        'username' => 'required',
+        'password' => 'nullable',
+    ]);
 
-        try {
-            // Set the connection to the selected database
-            config([
-                'database.connections.temp_mysql' => [
-                    'driver' => 'mysql',
-                    'host' => $validated['host'],
-                    'port' => $validated['port'],
-                    'database' => $validated['database'],
-                    'username' => $validated['username'],
-                    'password' => $validated['password'],
-                    'charset' => 'utf8mb4',
-                    'collation' => 'utf8mb4_unicode_ci',
-                    'prefix' => '',
-                    'strict' => false,
-                    'engine' => null,
-                ]
-            ]);
-            
-            DB::setDefaultConnection('temp_mysql');
+    try {
+        // Set the connection to the selected database
+        config([
+            'database.connections.temp_mysql' => [
+                'driver' => 'mysql',
+                'host' => $validated['host'],
+                'port' => $validated['port'],
+                'database' => $validated['database'],
+                'username' => $validated['username'],
+                'password' => $validated['password'],
+                'charset' => 'utf8mb4',
+                'collation' => 'utf8mb4_unicode_ci',
+                'prefix' => '',
+                'strict' => false,
+                'engine' => null,
+            ]
+        ]);
+        
+        DB::setDefaultConnection('temp_mysql');
+
+        // Execute the user-provided query
+        $results = DB::select($validated['query']);
     
-            // Execute the user-provided query
-            $results = DB::select($validated['query']);
+        return view('mysql.query', compact('results', 'validated'));
+
+    } catch (\Exception $e) {
+        // Log and show the exact error message
+        Log::error('Query Execution Error: ' . $e->getMessage());
     
-            return view('mysql.query', compact('results', 'validated'));
-    
-        } catch (\Exception $e) {
-            // Log and show the exact error message
-            Log::error('Query Execution Error: ' . $e->getMessage());
-    
-            return back()->with('error', 'The query execution failed: ' . $e->getMessage());
-        }
+        return back()->with('error', 'Query execution failed: ' . $e->getMessage());
     }
+}
 }

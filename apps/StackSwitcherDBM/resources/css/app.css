@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* General styles for the form */
+button {
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+input:focus {
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.5); /* Focus glow effect */
+}

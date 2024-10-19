@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* General styles for the form */
+form {
+    max-width: 600px; /* Set max width */
+    margin: 20px auto; /* Center the form */
+    padding: 20px; /* Add padding */
+    border: 1px solid #e0e0e0; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background color */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Style for form headings */
+form h3 {
+    margin-bottom: 20px; /* Space below headings */
+    font-size: 24px; /* Heading size */
+    color: #333; /* Heading color */
+}
+
+/* Style for labels */
+form label {
+    display: block; /* Labels on new lines */
+    margin-bottom: 5px; /* Space below labels */
+    font-weight: bold; /* Bold text */
+}
+
+/* Style for input fields and textareas */
+form input[type="text"],
+form input[type="hidden"],
+form input[type="password"],
+form select {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding inside input */
+    margin-bottom: 15px; /* Space below inputs */
+    border: 1px solid #ccc; /* Border style */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+}
+
+/* Style for the submit button */
+form button {
+    background-color: #4CAF50; /* Button color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    padding: 10px 15px; /* Padding inside button */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    font-size: 16px; /* Font size */
+}
+
+form button:hover {
+    background-color: #45a049; /* Darker shade on hover */
+}
+
+/* Style for error messages */
+.error {
+    color: red; /* Error text color */
+    margin-top: 15px; /* Space above error messages */
+}
