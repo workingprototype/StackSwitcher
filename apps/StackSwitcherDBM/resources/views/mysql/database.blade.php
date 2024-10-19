@@ -7,7 +7,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header text-center">
-                    <h3>Select a Database</h3>
+                    <h3>Select a Database/Collection</h3>
                 </div>
                 <div class="card-body">
                     <!-- Display Errors -->
@@ -32,10 +32,13 @@
                     <form action="{{ route('select.database') }}" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <label for="database" class="form-label">Database:</label>
+                            <label for="database" class="form-label">Database/Collection:</label>
                             <select name="database" id="database" class="form-select" required>
                                 @foreach($databases as $database)
-                                    <option value="{{ $database->Database }}">{{ $database->Database }}</option>
+                                    <!-- Handle different database structures -->
+                                    <option value="{{ isset($database->Database) ? $database->Database : (isset($database->name) ? $database->name : $database) }}">
+                                        {{ isset($database->Database) ? $database->Database : (isset($database->name) ? $database->name : $database) }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
@@ -45,10 +48,11 @@
                         <input type="hidden" name="port" value="{{ $validated['port'] }}">
                         <input type="hidden" name="username" value="{{ $validated['username'] }}">
                         <input type="hidden" name="password" value="{{ $validated['password'] }}">
+                        <input type="hidden" name="driver" value="{{ $validated['driver'] }}">
 
                         <!-- Submit Button -->
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Select Database</button>
+                            <button type="submit" class="btn btn-primary">Select Database/Collection</button>
                         </div>
                     </form>
                 </div>
